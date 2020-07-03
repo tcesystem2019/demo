@@ -74,7 +74,7 @@ public class Demo {
         param.put("data", data);
         param.put("timestamp", timestamp);
         param.put("signature", signature);
-        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://116.62.126.223:8880/api/put", param.toJSONString()));
+        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://freedrive.fchwallet.com:8880/api/put", param.toJSONString()));
         return result;
 
     }
@@ -88,31 +88,31 @@ public class Demo {
         param.put("drive_id", drive_id);
         param.put("timestamp", timestamp);
         param.put("signature", signature);
-        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://116.62.126.223:8880/api/update", param.toJSONString()));
+        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://freedrive.fchwallet.com:8880/api/update", param.toJSONString()));
         return result;
 
     }
 
-    public static JSONObject requestGetDrive(String adds, String drive_id, String timestamp, String signature) throws Exception {
+    public static JSONObject requestGetDriveid(String adds, String drive_id, String timestamp, String signature) throws Exception {
 
         JSONObject param = new JSONObject();
         param.put("addr", adds);
         param.put("drive_id", drive_id);
         param.put("timestamp", timestamp);
         param.put("signature", signature);
-        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://116.62.126.223:8880/api/get", param.toJSONString()));
+        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://freedrive.fchwallet.com:8880/api/get", param.toJSONString()));
         return result;
 
     }
 
-    public static JSONObject requestGetUpdate(String adds, String drive_id, String timestamp, String signature) throws Exception {
+    public static JSONObject requestGetUpdateid(String adds, String update_id, String timestamp, String signature) throws Exception {
 
         JSONObject param = new JSONObject();
         param.put("addr", adds);
-        param.put("drive_id", drive_id);
+        param.put("update_id", update_id);
         param.put("timestamp", timestamp);
         param.put("signature", signature);
-        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://116.62.126.223:8880/api/get", param.toJSONString()));
+        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://freedrive.fchwallet.com:8880/api/get", param.toJSONString()));
         return result;
 
     }
@@ -124,7 +124,7 @@ public class Demo {
         param.put("drive_id", drive_id);
         param.put("timestamp", timestamp);
         param.put("signature", signature);
-        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://116.62.126.223:8880/api/get_drive_id", param.toJSONString()));
+        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://freedrive.fchwallet.com:8880/api/list_drive_id", param.toJSONString()));
         return result;
 
     }
@@ -135,7 +135,7 @@ public class Demo {
         param.put("addr", adds);
         param.put("timestamp", timestamp);
         param.put("signature", signature);
-        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://116.62.126.223:8880/api/get_balance", param.toJSONString()));
+        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://freedrive.fchwallet.com:8880/api/get_balance", param.toJSONString()));
         return result;
 
     }
@@ -146,7 +146,7 @@ public class Demo {
         param.put("addr", adds);
         param.put("timestamp", timestamp);
         param.put("signature", signature);
-        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://116.62.126.223:8880/api/get_tx_history", param.toJSONString()));
+        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://freedrive.fchwallet.com:8880/api/get_tx_history", param.toJSONString()));
         return result;
 
     }
@@ -158,7 +158,7 @@ public class Demo {
         param.put("drive_id", drive_id);
         param.put("timestamp", timestamp);
         param.put("signature", signature);
-        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://116.62.126.223:8880/api/terminate_drive_id", param.toJSONString()));
+        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://freedrive.fchwallet.com:8880/api/terminate_drive_id", param.toJSONString()));
         return result;
 
     }
