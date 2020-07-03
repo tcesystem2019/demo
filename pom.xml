@@ -113,11 +113,11 @@
         </dependency>
 
         <!--验证码 -->
-        <dependency>
-            <groupId>com.github.penggle</groupId>
-            <artifactId>kaptcha</artifactId>
-            <version>${kaptcha.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.github.penggle</groupId>-->
+            <!--<artifactId>kaptcha</artifactId>-->
+            <!--<version>${kaptcha.version}</version>-->
+        <!--</dependency>-->
 
         <!--Shiro核心框架 -->
         <dependency>
