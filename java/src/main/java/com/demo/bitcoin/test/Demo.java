@@ -24,25 +24,25 @@ public class Demo {
 //        私钥：L4zteFp6S5wb7sQkNJyDcVwCUVQNRKq3FySPyGszWw1ppq9vsLHF
 
         // put请求
-//        String[] putAdds = {"1FLc1UYjWER9gSHwCsvaAi2TUZQhfiuAst"}; // 刚刚生成的地址
-//        String putMetadata = "01010101"; // 协议
-//        String putData = "01010101"; //上传内容转16进制数据
+//        String[] putAdds = {"1NaF3hFm6hrRiZrHBVxyB9S7rLzBy5fYNA"}; // 刚刚生成的地址
+//        String putMetadata = "0101"; // 协议
+//        String putData = "0101010101"; //上传内容转16进制数据
 //        String putTimestamp = new Date().getTime() + "";  // 时间戳
 //        StringBuilder putSign = new StringBuilder();
 //        putSign.append(putAdds[0]).append(putMetadata).append(putData).append(putTimestamp);
-//        String putSignature = signMsg(Sha256.getSHA256(putSign.toString()), "L4zteFp6S5wb7sQkNJyDcVwCUVQNRKq3FySPyGszWw1ppq9vsLHF"); // 签名，把参数内容拼接，然后sha256， 再传入自己保存的私钥
+//        String putSignature = signMsg(Sha256.getSHA256(putSign.toString()), "Kwe84LJbK9F2HPDcYsN6kLnWXcUd2bP12DScHN575f3qyuDDXgjV"); // 签名，把参数内容拼接，然后sha256， 再传入自己保存的私钥
 //        JSONObject resultPutInfo = requestPut(putAdds, putMetadata, putData, putTimestamp, putSignature);
 //        System.out.println(resultPutInfo.toJSONString());
 
-        // update请求
-//        String[] updateAdds = {""}; // 刚刚生成的地址
-//        String updateMetadata = "01010101"; // 协议
+//         update请求
+//        String[] updateAdds = {"1NaF3hFm6hrRiZrHBVxyB9S7rLzBy5fYNA"}; // 刚刚生成的地址
+//        String updateMetadata = "0101"; // 协议
 //        String updateData = "01010101"; //上传内容转16进制数据
-//        String updateDirveId = "01010101"; //上传内容转16进制数据
+//        String updateDirveId = "1c88d45979317c5450127082d1575b50cb6ef265926e7e4e78bb218be4e820a3";
 //        String updateTimestamp = new Date().getTime() + "";  // 时间戳
 //        StringBuilder updateSign = new StringBuilder();
-//        updateSign.append(updateAdds.toString()).append(updateMetadata).append(updateData).append(updateTimestamp);
-//        String updateSignature = signMsg(Sha256.getSHA256(putSign.toString()), ""); // 签名，把参数内容拼接，然后sha256， 再传入自己保存的私钥
+//        updateSign.append(updateAdds[0]).append(updateMetadata).append(updateData).append(updateDirveId).append(updateTimestamp);
+//        String updateSignature = signMsg(Sha256.getSHA256(updateSign.toString()), "Kwe84LJbK9F2HPDcYsN6kLnWXcUd2bP12DScHN575f3qyuDDXgjV"); // 签名，把参数内容拼接，然后sha256， 再传入自己保存的私钥
 //        JSONObject resultUpdateInfo = requestUpdate(updateAdds, updateMetadata, updateData, updateDirveId, updateTimestamp, updateSignature);
 //        System.out.println(resultUpdateInfo.toJSONString());
 
@@ -73,22 +73,13 @@ public class Demo {
 //        StringBuilder driveListSign = new StringBuilder();
 //        driveListSign.append(driveListAdds).append(driveListTimestamp);
 //        String driveListSignature = signMsg(Sha256.getSHA256(driveListSign.toString()), "Kwe84LJbK9F2HPDcYsN6kLnWXcUd2bP12DScHN575f3qyuDDXgjV");
-//        JSONObject driveList = requestGetDriveId(driveListAdds, driveListTimestamp, driveListSignature);
-//        System.out.println(driveList);
-
-        // 查询driveid列表
-//        String driveListAdds = "1NaF3hFm6hrRiZrHBVxyB9S7rLzBy5fYNA";
-//        String driveListTimestamp = new Date().getTime() + "";  // 时间戳
-//        StringBuilder driveListSign = new StringBuilder();
-//        driveListSign.append(driveListAdds).append(driveListTimestamp);
-//        String driveListSignature = signMsg(Sha256.getSHA256(driveListSign.toString()), "Kwe84LJbK9F2HPDcYsN6kLnWXcUd2bP12DScHN575f3qyuDDXgjV");
-//        JSONObject driveList = requestGetDriveId(driveListAdds, driveListTimestamp, driveListSignature);
+//        JSONObject driveList = requestListDriveId(driveListAdds, driveListTimestamp, driveListSignature);
 //        System.out.println(driveList);
 
 
         // 查询指定driveId下的数据
 //        String driveIdAdds = "1NaF3hFm6hrRiZrHBVxyB9S7rLzBy5fYNA";
-//        String getdrive_id = "";
+//        String getdrive_id = "1c88d45979317c5450127082d1575b50cb6ef265926e7e4e78bb218be4e820a3";
 //        String driveIdTimestamp = new Date().getTime() + "";  // 时间戳
 //        StringBuilder driveIdSign = new StringBuilder();
 //        driveIdSign.append(driveIdAdds).append(getdrive_id).append(driveIdTimestamp);
@@ -98,7 +89,7 @@ public class Demo {
 
         // 查询指定updateId下的数据
 //        String updateIdAdds = "1NaF3hFm6hrRiZrHBVxyB9S7rLzBy5fYNA";
-//        String getupdate_id = "";
+//        String getupdate_id = "966b8e6ec6da0fa2a2e00223e38fb31641c5a80438e91f350da1275262c13cd5";
 //        String updateIdTimestamp = new Date().getTime() + "";  // 时间戳
 //        StringBuilder updateIdSign = new StringBuilder();
 //        updateIdSign.append(updateIdAdds).append(getupdate_id).append(updateIdTimestamp);
@@ -108,7 +99,7 @@ public class Demo {
 
         // 终结driveId
 //        String terminateAdds = "1NaF3hFm6hrRiZrHBVxyB9S7rLzBy5fYNA";
-//        String terminateDrive_id = "";
+//        String terminateDrive_id = "1c88d45979317c5450127082d1575b50cb6ef265926e7e4e78bb218be4e820a3";
 //        String terminateTimestamp = new Date().getTime() + "";  // 时间戳
 //        StringBuilder terminateSign = new StringBuilder();
 //        terminateSign.append(terminateAdds).append(terminateDrive_id).append(terminateTimestamp);
@@ -185,7 +176,7 @@ public class Demo {
 
     }
 
-    public static JSONObject requestGetDriveId(String adds, String timestamp, String signature) throws Exception {
+    public static JSONObject requestListDriveId(String adds, String timestamp, String signature) throws Exception {
 
         JSONObject param = new JSONObject();
         param.put("addr", adds);
