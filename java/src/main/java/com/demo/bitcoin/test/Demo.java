@@ -16,10 +16,10 @@ import java.util.Map;
 public class Demo {
 
     public static void main(String[] args) throws Exception {
-//        Map<String, String> map = createAddress();
+        Map<String, String> map = createAddress();
 //        // 请妥善保存私钥和地址，后续操作都需要
-//        System.out.println("地址："+map.get("fromAddr"));
-//        System.out.println("私钥："+map.get("privateKey"));
+        System.out.println("地址："+map.get("fromAddr"));
+        System.out.println("私钥："+map.get("privateKey"));
 //        地址：1FLc1UYjWER9gSHwCsvaAi2TUZQhfiuAst
 //        私钥：L4zteFp6S5wb7sQkNJyDcVwCUVQNRKq3FySPyGszWw1ppq9vsLHF
 
