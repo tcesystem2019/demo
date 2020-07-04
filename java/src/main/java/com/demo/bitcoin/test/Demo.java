@@ -24,15 +24,15 @@ public class Demo {
 //        私钥：L4zteFp6S5wb7sQkNJyDcVwCUVQNRKq3FySPyGszWw1ppq9vsLHF
 
         // put请求
-        String[] putAdds = {"1FLc1UYjWER9gSHwCsvaAi2TUZQhfiuAst"}; // 刚刚生成的地址
-        String putMetadata = "01010101"; // 协议
-        String putData = "01010101"; //上传内容转16进制数据
-        String putTimestamp = new Date().getTime() + "";  // 时间戳
-        StringBuilder putSign = new StringBuilder();
-        putSign.append(putAdds[0]).append(putMetadata).append(putData).append(putTimestamp);
-        String putSignature = signMsg(Sha256.getSHA256(putSign.toString()), "L4zteFp6S5wb7sQkNJyDcVwCUVQNRKq3FySPyGszWw1ppq9vsLHF"); // 签名，把参数内容拼接，然后sha256， 再传入自己保存的私钥
-        JSONObject resultPutInfo = requestPut(putAdds, putMetadata, putData, putTimestamp, putSignature);
-        System.out.println(resultPutInfo.toJSONString());
+//        String[] putAdds = {"1FLc1UYjWER9gSHwCsvaAi2TUZQhfiuAst"}; // 刚刚生成的地址
+//        String putMetadata = "01010101"; // 协议
+//        String putData = "01010101"; //上传内容转16进制数据
+//        String putTimestamp = new Date().getTime() + "";  // 时间戳
+//        StringBuilder putSign = new StringBuilder();
+//        putSign.append(putAdds[0]).append(putMetadata).append(putData).append(putTimestamp);
+//        String putSignature = signMsg(Sha256.getSHA256(putSign.toString()), "L4zteFp6S5wb7sQkNJyDcVwCUVQNRKq3FySPyGszWw1ppq9vsLHF"); // 签名，把参数内容拼接，然后sha256， 再传入自己保存的私钥
+//        JSONObject resultPutInfo = requestPut(putAdds, putMetadata, putData, putTimestamp, putSignature);
+//        System.out.println(resultPutInfo.toJSONString());
 
         // update请求
 //        String[] updateAdds = {""}; // 刚刚生成的地址
@@ -46,7 +46,75 @@ public class Demo {
 //        JSONObject resultUpdateInfo = requestUpdate(updateAdds, updateMetadata, updateData, updateDirveId, updateTimestamp, updateSignature);
 //        System.out.println(resultUpdateInfo.toJSONString());
 
-        // 下面接口以此类推
+
+        // 查询余额
+//        String balanceAdds = "1NaF3hFm6hrRiZrHBVxyB9S7rLzBy5fYNA";
+//        String balanceTimestamp = new Date().getTime() + "";  // 时间戳
+//        StringBuilder balanceSign = new StringBuilder();
+//        balanceSign.append(balanceAdds).append(balanceTimestamp);
+//        String balanceSignature = signMsg(Sha256.getSHA256(balanceSign.toString()), "Kwe84LJbK9F2HPDcYsN6kLnWXcUd2bP12DScHN575f3qyuDDXgjV");
+//        JSONObject resultBalance = requestBalance(balanceAdds, balanceTimestamp, balanceSignature);
+//        System.out.println(resultBalance.toJSONString());
+
+        // 查询历史记录
+//        String histroryAdds = "1NaF3hFm6hrRiZrHBVxyB9S7rLzBy5fYNA";
+//        String histroryTimestamp = new Date().getTime() + "";  // 时间戳
+//        Integer page = 1;
+//        StringBuilder histrorySign = new StringBuilder();
+//        histrorySign.append(histroryAdds).append(page).append(histroryTimestamp);
+//        String histrorySignature = signMsg(Sha256.getSHA256(histrorySign.toString()), "Kwe84LJbK9F2HPDcYsN6kLnWXcUd2bP12DScHN575f3qyuDDXgjV");
+//        JSONObject resultHistory = requestGetTxHistory(histroryAdds, page, histroryTimestamp, histrorySignature);
+//        System.out.println(resultHistory.toJSONString());
+
+
+        // 查询driveid列表
+//        String driveListAdds = "1NaF3hFm6hrRiZrHBVxyB9S7rLzBy5fYNA";
+//        String driveListTimestamp = new Date().getTime() + "";  // 时间戳
+//        StringBuilder driveListSign = new StringBuilder();
+//        driveListSign.append(driveListAdds).append(driveListTimestamp);
+//        String driveListSignature = signMsg(Sha256.getSHA256(driveListSign.toString()), "Kwe84LJbK9F2HPDcYsN6kLnWXcUd2bP12DScHN575f3qyuDDXgjV");
+//        JSONObject driveList = requestGetDriveId(driveListAdds, driveListTimestamp, driveListSignature);
+//        System.out.println(driveList);
+
+        // 查询driveid列表
+//        String driveListAdds = "1NaF3hFm6hrRiZrHBVxyB9S7rLzBy5fYNA";
+//        String driveListTimestamp = new Date().getTime() + "";  // 时间戳
+//        StringBuilder driveListSign = new StringBuilder();
+//        driveListSign.append(driveListAdds).append(driveListTimestamp);
+//        String driveListSignature = signMsg(Sha256.getSHA256(driveListSign.toString()), "Kwe84LJbK9F2HPDcYsN6kLnWXcUd2bP12DScHN575f3qyuDDXgjV");
+//        JSONObject driveList = requestGetDriveId(driveListAdds, driveListTimestamp, driveListSignature);
+//        System.out.println(driveList);
+
+
+        // 查询指定driveId下的数据
+//        String driveIdAdds = "1NaF3hFm6hrRiZrHBVxyB9S7rLzBy5fYNA";
+//        String getdrive_id = "";
+//        String driveIdTimestamp = new Date().getTime() + "";  // 时间戳
+//        StringBuilder driveIdSign = new StringBuilder();
+//        driveIdSign.append(driveIdAdds).append(getdrive_id).append(driveIdTimestamp);
+//        String driveIdSignature = signMsg(Sha256.getSHA256(driveIdSign.toString()), "Kwe84LJbK9F2HPDcYsN6kLnWXcUd2bP12DScHN575f3qyuDDXgjV");
+//        JSONObject getDriveId = requestGetDriveid(driveIdAdds, getdrive_id, driveIdTimestamp, driveIdSignature);
+//        System.out.println(getDriveId);
+
+        // 查询指定updateId下的数据
+//        String updateIdAdds = "1NaF3hFm6hrRiZrHBVxyB9S7rLzBy5fYNA";
+//        String getupdate_id = "";
+//        String updateIdTimestamp = new Date().getTime() + "";  // 时间戳
+//        StringBuilder updateIdSign = new StringBuilder();
+//        updateIdSign.append(updateIdAdds).append(getupdate_id).append(updateIdTimestamp);
+//        String updateIdSignature = signMsg(Sha256.getSHA256(updateIdSign.toString()), "Kwe84LJbK9F2HPDcYsN6kLnWXcUd2bP12DScHN575f3qyuDDXgjV");
+//        JSONObject getUpdateId = requestGetUpdateid(updateIdAdds, getupdate_id, updateIdTimestamp, updateIdSignature);
+//        System.out.println(getUpdateId);
+
+        // 终结driveId
+//        String terminateAdds = "1NaF3hFm6hrRiZrHBVxyB9S7rLzBy5fYNA";
+//        String terminateDrive_id = "";
+//        String terminateTimestamp = new Date().getTime() + "";  // 时间戳
+//        StringBuilder terminateSign = new StringBuilder();
+//        terminateSign.append(terminateAdds).append(terminateDrive_id).append(terminateTimestamp);
+//        String terminateSignature = signMsg(Sha256.getSHA256(terminateSign.toString()), "Kwe84LJbK9F2HPDcYsN6kLnWXcUd2bP12DScHN575f3qyuDDXgjV");
+//        JSONObject terminateDriveId = terminateDriveId(terminateAdds, terminateDrive_id, terminateTimestamp, terminateSignature);
+//        System.out.println(terminateDriveId);
 
     }
 
@@ -117,11 +185,10 @@ public class Demo {
 
     }
 
-    public static JSONObject requestGetDriveId(String adds, String drive_id, String timestamp, String signature) throws Exception {
+    public static JSONObject requestGetDriveId(String adds, String timestamp, String signature) throws Exception {
 
         JSONObject param = new JSONObject();
         param.put("addr", adds);
-        param.put("drive_id", drive_id);
         param.put("timestamp", timestamp);
         param.put("signature", signature);
         JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://freedrive.cash:8880/api/list_drive_id", param.toJSONString()));
@@ -140,10 +207,11 @@ public class Demo {
 
     }
 
-    public static JSONObject requestGetTxHistory(String adds, String timestamp, String signature) throws Exception {
+    public static JSONObject requestGetTxHistory(String adds, Integer page, String timestamp, String signature) throws Exception {
 
         JSONObject param = new JSONObject();
         param.put("addr", adds);
+        param.put("page", page);
         param.put("timestamp", timestamp);
         param.put("signature", signature);
         JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://freedrive.cash:8880/api/get_tx_history", param.toJSONString()));
