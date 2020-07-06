@@ -15,7 +15,9 @@ import java.util.Map;
 
 public class Demo {
 
+
     public static void main(String[] args) throws Exception {
+
         Map<String, String> map = createAddress();
 //        // 请妥善保存私钥和地址，后续操作都需要
         System.out.println("地址："+map.get("fromAddr"));
@@ -24,88 +26,88 @@ public class Demo {
 //        私钥：L4zteFp6S5wb7sQkNJyDcVwCUVQNRKq3FySPyGszWw1ppq9vsLHF
 
         // put请求
-//        String[] putAdds = {"1NaF3hFm6hrRiZrHBVxyB9S7rLzBy5fYNA"}; // 刚刚生成的地址
-//        String putMetadata = "0101"; // 协议
-//        String putData = "0101010101"; //上传内容转16进制数据
-//        String putTimestamp = new Date().getTime() + "";  // 时间戳
-//        StringBuilder putSign = new StringBuilder();
-//        putSign.append(putAdds[0]).append(putMetadata).append(putData).append(putTimestamp);
-//        String putSignature = signMsg(Sha256.getSHA256(putSign.toString()), "Kwe84LJbK9F2HPDcYsN6kLnWXcUd2bP12DScHN575f3qyuDDXgjV"); // 签名，把参数内容拼接，然后sha256， 再传入自己保存的私钥
-//        JSONObject resultPutInfo = requestPut(putAdds, putMetadata, putData, putTimestamp, putSignature);
-//        System.out.println(resultPutInfo.toJSONString());
+        String[] putAdds = {"1FYxtYYKme9EjuZMsWVesJxrP75fAHo2jL"}; // 刚刚生成的地址
+        String putMetadata = "0101"; // 协议
+        String putData = "0101010101"; //上传内容转16进制数据
+        String putTimestamp = new Date().getTime() + "";  // 时间戳
+        StringBuilder putSign = new StringBuilder();
+        putSign.append(putAdds[0]).append(putMetadata).append(putData).append(putTimestamp);
+        String putSignature = signMsg(Sha256.getSHA256(putSign.toString()), "KzGmcC2Fa48NHmad6SEst4Q1J9mHd95aFxzEuNrT94CEb6qrZAV6"); // 签名，把参数内容拼接，然后sha256， 再传入自己保存的私钥
+        JSONObject resultPutInfo = requestPut(putAdds, putMetadata, putData, putTimestamp, putSignature);
+        System.out.println(resultPutInfo.toJSONString());
 
 //         update请求
-//        String[] updateAdds = {"1NaF3hFm6hrRiZrHBVxyB9S7rLzBy5fYNA"}; // 刚刚生成的地址
-//        String updateMetadata = "0101"; // 协议
-//        String updateData = "01010101"; //上传内容转16进制数据
-//        String updateDirveId = "1c88d45979317c5450127082d1575b50cb6ef265926e7e4e78bb218be4e820a3";
-//        String updateTimestamp = new Date().getTime() + "";  // 时间戳
-//        StringBuilder updateSign = new StringBuilder();
-//        updateSign.append(updateAdds[0]).append(updateMetadata).append(updateData).append(updateDirveId).append(updateTimestamp);
-//        String updateSignature = signMsg(Sha256.getSHA256(updateSign.toString()), "Kwe84LJbK9F2HPDcYsN6kLnWXcUd2bP12DScHN575f3qyuDDXgjV"); // 签名，把参数内容拼接，然后sha256， 再传入自己保存的私钥
-//        JSONObject resultUpdateInfo = requestUpdate(updateAdds, updateMetadata, updateData, updateDirveId, updateTimestamp, updateSignature);
-//        System.out.println(resultUpdateInfo.toJSONString());
+        String[] updateAdds = {"1FYxtYYKme9EjuZMsWVesJxrP75fAHo2jL"}; // 刚刚生成的地址
+        String updateMetadata = "0101"; // 协议
+        String updateData = "010101010101"; //上传内容转16进制数据
+        String updateDirveId = "98bc150f1ed1e35f55a63a5d316fd376accbf2427e7bcd903dd886dd33126a08";
+        String updateTimestamp = new Date().getTime() + "";  // 时间戳
+        StringBuilder updateSign = new StringBuilder();
+        updateSign.append(updateAdds[0]).append(updateMetadata).append(updateData).append(updateDirveId).append(updateTimestamp);
+        String updateSignature = signMsg(Sha256.getSHA256(updateSign.toString()), "KzGmcC2Fa48NHmad6SEst4Q1J9mHd95aFxzEuNrT94CEb6qrZAV6"); // 签名，把参数内容拼接，然后sha256， 再传入自己保存的私钥
+        JSONObject resultUpdateInfo = requestUpdate(updateAdds, updateMetadata, updateData, updateDirveId, updateTimestamp, updateSignature);
+        System.out.println(resultUpdateInfo.toJSONString());
 
 
         // 查询余额
-//        String balanceAdds = "1NaF3hFm6hrRiZrHBVxyB9S7rLzBy5fYNA";
-//        String balanceTimestamp = new Date().getTime() + "";  // 时间戳
-//        StringBuilder balanceSign = new StringBuilder();
-//        balanceSign.append(balanceAdds).append(balanceTimestamp);
-//        String balanceSignature = signMsg(Sha256.getSHA256(balanceSign.toString()), "Kwe84LJbK9F2HPDcYsN6kLnWXcUd2bP12DScHN575f3qyuDDXgjV");
-//        JSONObject resultBalance = requestBalance(balanceAdds, balanceTimestamp, balanceSignature);
-//        System.out.println(resultBalance.toJSONString());
+        String balanceAdds = "14o7rfdJvALLMnCXDRHPDQXMpvsqJsSHbm";
+        String balanceTimestamp = new Date().getTime() + "";  // 时间戳
+        StringBuilder balanceSign = new StringBuilder();
+        balanceSign.append(balanceAdds).append(balanceTimestamp);
+        String balanceSignature = signMsg(Sha256.getSHA256(balanceSign.toString()), "L3f9yDet5xxABPfnuKHXhgSj4qannueHRfsV8UQXKsMrQjsahofn");
+        JSONObject resultBalance = requestBalance(balanceAdds, balanceTimestamp, balanceSignature);
+        System.out.println(resultBalance.toJSONString());
 
         // 查询历史记录
-//        String histroryAdds = "1NaF3hFm6hrRiZrHBVxyB9S7rLzBy5fYNA";
-//        String histroryTimestamp = new Date().getTime() + "";  // 时间戳
-//        Integer page = 1;
-//        StringBuilder histrorySign = new StringBuilder();
-//        histrorySign.append(histroryAdds).append(page).append(histroryTimestamp);
-//        String histrorySignature = signMsg(Sha256.getSHA256(histrorySign.toString()), "Kwe84LJbK9F2HPDcYsN6kLnWXcUd2bP12DScHN575f3qyuDDXgjV");
-//        JSONObject resultHistory = requestGetTxHistory(histroryAdds, page, histroryTimestamp, histrorySignature);
-//        System.out.println(resultHistory.toJSONString());
+        String histroryAdds = "1Nd3WFphEJMuzB3Ecb6thTpBDP5iCppaQT";
+        String histroryTimestamp = new Date().getTime() + "";  // 时间戳
+        Integer page = 1;
+        StringBuilder histrorySign = new StringBuilder();
+        histrorySign.append(histroryAdds).append(page).append(histroryTimestamp);
+        String histrorySignature = signMsg(Sha256.getSHA256(histrorySign.toString()), "KxbMxgosz2PsPWBpRJoacMng1njsNPJL5SjhXsCdzBjARy7FMp15");
+        JSONObject resultHistory = requestGetTxHistory(histroryAdds, page, histroryTimestamp, histrorySignature);
+        System.out.println(resultHistory.toJSONString());
 
 
         // 查询driveid列表
-//        String driveListAdds = "1NaF3hFm6hrRiZrHBVxyB9S7rLzBy5fYNA";
-//        String driveListTimestamp = new Date().getTime() + "";  // 时间戳
-//        StringBuilder driveListSign = new StringBuilder();
-//        driveListSign.append(driveListAdds).append(driveListTimestamp);
-//        String driveListSignature = signMsg(Sha256.getSHA256(driveListSign.toString()), "Kwe84LJbK9F2HPDcYsN6kLnWXcUd2bP12DScHN575f3qyuDDXgjV");
-//        JSONObject driveList = requestListDriveId(driveListAdds, driveListTimestamp, driveListSignature);
-//        System.out.println(driveList);
+        String driveListAdds = "1FYxtYYKme9EjuZMsWVesJxrP75fAHo2jL";
+        String driveListTimestamp = new Date().getTime() + "";  // 时间戳
+        StringBuilder driveListSign = new StringBuilder();
+        driveListSign.append(driveListAdds).append(driveListTimestamp);
+        String driveListSignature = signMsg(Sha256.getSHA256(driveListSign.toString()), "KzGmcC2Fa48NHmad6SEst4Q1J9mHd95aFxzEuNrT94CEb6qrZAV6");
+        JSONObject driveList = requestListDriveId(driveListAdds, driveListTimestamp, driveListSignature);
+        System.out.println(driveList);
 
 
         // 查询指定driveId下的数据
-//        String driveIdAdds = "1NaF3hFm6hrRiZrHBVxyB9S7rLzBy5fYNA";
-//        String getdrive_id = "1c88d45979317c5450127082d1575b50cb6ef265926e7e4e78bb218be4e820a3";
-//        String driveIdTimestamp = new Date().getTime() + "";  // 时间戳
-//        StringBuilder driveIdSign = new StringBuilder();
-//        driveIdSign.append(driveIdAdds).append(getdrive_id).append(driveIdTimestamp);
-//        String driveIdSignature = signMsg(Sha256.getSHA256(driveIdSign.toString()), "Kwe84LJbK9F2HPDcYsN6kLnWXcUd2bP12DScHN575f3qyuDDXgjV");
-//        JSONObject getDriveId = requestGetDriveid(driveIdAdds, getdrive_id, driveIdTimestamp, driveIdSignature);
-//        System.out.println(getDriveId);
+        String driveIdAdds = "1FYxtYYKme9EjuZMsWVesJxrP75fAHo2jL";
+        String getdrive_id = "98bc150f1ed1e35f55a63a5d316fd376accbf2427e7bcd903dd886dd33126a08";
+        String driveIdTimestamp = new Date().getTime() + "";  // 时间戳
+        StringBuilder driveIdSign = new StringBuilder();
+        driveIdSign.append(driveIdAdds).append(getdrive_id).append(driveIdTimestamp);
+        String driveIdSignature = signMsg(Sha256.getSHA256(driveIdSign.toString()), "KzGmcC2Fa48NHmad6SEst4Q1J9mHd95aFxzEuNrT94CEb6qrZAV6");
+        JSONObject getDriveId = requestGetDriveid(driveIdAdds, getdrive_id, driveIdTimestamp, driveIdSignature);
+        System.out.println(getDriveId);
 
         // 查询指定updateId下的数据
-//        String updateIdAdds = "1NaF3hFm6hrRiZrHBVxyB9S7rLzBy5fYNA";
-//        String getupdate_id = "966b8e6ec6da0fa2a2e00223e38fb31641c5a80438e91f350da1275262c13cd5";
-//        String updateIdTimestamp = new Date().getTime() + "";  // 时间戳
-//        StringBuilder updateIdSign = new StringBuilder();
-//        updateIdSign.append(updateIdAdds).append(getupdate_id).append(updateIdTimestamp);
-//        String updateIdSignature = signMsg(Sha256.getSHA256(updateIdSign.toString()), "Kwe84LJbK9F2HPDcYsN6kLnWXcUd2bP12DScHN575f3qyuDDXgjV");
-//        JSONObject getUpdateId = requestGetUpdateid(updateIdAdds, getupdate_id, updateIdTimestamp, updateIdSignature);
-//        System.out.println(getUpdateId);
+        String updateIdAdds = "1FYxtYYKme9EjuZMsWVesJxrP75fAHo2jL";
+        String getupdate_id = "994029009372e161d6f49846784b4be4c9318d701daf89d7c75df8f9b6113d0e";
+        String updateIdTimestamp = new Date().getTime() + "";  // 时间戳
+        StringBuilder updateIdSign = new StringBuilder();
+        updateIdSign.append(updateIdAdds).append(getupdate_id).append(updateIdTimestamp);
+        String updateIdSignature = signMsg(Sha256.getSHA256(updateIdSign.toString()), "Kx6ddZU1vBerWbqaFfTuxtxT4n8aUSqWoRJbGtzNVKutMnXpopzQ");
+        JSONObject getUpdateId = requestGetUpdateid(updateIdAdds, getupdate_id, updateIdTimestamp, updateIdSignature);
+        System.out.println(getUpdateId);
 
         // 终结driveId
-//        String terminateAdds = "1NaF3hFm6hrRiZrHBVxyB9S7rLzBy5fYNA";
-//        String terminateDrive_id = "1c88d45979317c5450127082d1575b50cb6ef265926e7e4e78bb218be4e820a3";
-//        String terminateTimestamp = new Date().getTime() + "";  // 时间戳
-//        StringBuilder terminateSign = new StringBuilder();
-//        terminateSign.append(terminateAdds).append(terminateDrive_id).append(terminateTimestamp);
-//        String terminateSignature = signMsg(Sha256.getSHA256(terminateSign.toString()), "Kwe84LJbK9F2HPDcYsN6kLnWXcUd2bP12DScHN575f3qyuDDXgjV");
-//        JSONObject terminateDriveId = terminateDriveId(terminateAdds, terminateDrive_id, terminateTimestamp, terminateSignature);
-//        System.out.println(terminateDriveId);
+        String terminateAdds = "1NaF3hFm6hrRiZrHBVxyB9S7rLzBy5fYNA";
+        String terminateDrive_id = "1c88d45979317c5450127082d1575b50cb6ef265926e7e4e78bb218be4e820a3";
+        String terminateTimestamp = new Date().getTime() + "";  // 时间戳
+        StringBuilder terminateSign = new StringBuilder();
+        terminateSign.append(terminateAdds).append(terminateDrive_id).append(terminateTimestamp);
+        String terminateSignature = signMsg(Sha256.getSHA256(terminateSign.toString()), "Kwe84LJbK9F2HPDcYsN6kLnWXcUd2bP12DScHN575f3qyuDDXgjV");
+        JSONObject terminateDriveId = terminateDriveId(terminateAdds, terminateDrive_id, terminateTimestamp, terminateSignature);
+        System.out.println(terminateDriveId);
 
     }
 
