@@ -9,7 +9,6 @@ import org.bitcoinj.core.ECKey;
 import org.bitcoinj.core.NetworkParameters;
 import org.bitcoinj.params.MainNetParams;
 
-import java.math.BigInteger;
 import java.util.Date;
 import java.util.Map;
 
@@ -58,13 +57,13 @@ public class Demo {
 //
 //
 //        // 查询余额
-        String balanceDappAdds = "1FYxtYYKme9EjuZMsWVesJxrP75fAHo2jL";
-        String balanceTimestamp = new Date().getTime() + "";  // 时间戳
-        StringBuilder balanceSign = new StringBuilder();
-        balanceSign.append(balanceDappAdds).append(balanceTimestamp);
-        String balanceSignature = signMsg(Sha256.getSHA256(balanceSign.toString()), "KzGmcC2Fa48NHmad6SEst4Q1J9mHd95aFxzEuNrT94CEb6qrZAV6");
-        JSONObject resultBalance = requestBalance(balanceDappAdds, balanceTimestamp, balanceSignature);
-        System.out.println(resultBalance.toJSONString());
+//        String balanceDappAdds = "1FYxtYYKme9EjuZMsWVesJxrP75fAHo2jL";
+//        String balanceTimestamp = new Date().getTime() + "";  // 时间戳
+//        StringBuilder balanceSign = new StringBuilder();
+//        balanceSign.append(balanceDappAdds).append(balanceTimestamp);
+//        String balanceSignature = signMsg(Sha256.getSHA256(balanceSign.toString()), "KzGmcC2Fa48NHmad6SEst4Q1J9mHd95aFxzEuNrT94CEb6qrZAV6");
+//        JSONObject resultBalance = requestBalance(balanceDappAdds, balanceTimestamp, balanceSignature);
+//        System.out.println(resultBalance.toJSONString());
 //
 //        // 查询历史记录
 //        String histroryDappAdds = "1Nd3WFphEJMuzB3Ecb6thTpBDP5iCppaQT";
@@ -89,26 +88,33 @@ public class Demo {
 //
 //
 //        // 查询指定driveId下的数据
-//        String driveIdUserAdds = "1DEPkC79Mr8QRa1w7NJxqA7RUP6VnHWHwB";
 //        String driveIdDappAdds = "1FYxtYYKme9EjuZMsWVesJxrP75fAHo2jL";
 //        String getdrive_id = "521f7b0d1cebf583c67238cf16b5a41eeec9ed64ef19e2cccd36b59790086c18";
 //        String driveIdTimestamp = new Date().getTime() + "";  // 时间戳
 //        StringBuilder driveIdSign = new StringBuilder();
-//        driveIdSign.append(driveIdUserAdds).append(driveIdDappAdds).append(getdrive_id).append(driveIdTimestamp);
+//        driveIdSign.append(driveIdDappAdds).append(getdrive_id).append(driveIdTimestamp);
 //        String driveIdSignature = signMsg(Sha256.getSHA256(driveIdSign.toString()), "KzGmcC2Fa48NHmad6SEst4Q1J9mHd95aFxzEuNrT94CEb6qrZAV6");
-//        JSONObject getDriveId = requestGetDriveid(driveIdUserAdds, driveIdDappAdds, getdrive_id, driveIdTimestamp, driveIdSignature);
+//        JSONObject getDriveId = requestGetDriveid(driveIdDappAdds, getdrive_id, driveIdTimestamp, driveIdSignature);
 //        System.out.println(getDriveId);
 //
 //        // 查询指定updateId下的数据
-//        String updateIdUserAdds = "1DEPkC79Mr8QRa1w7NJxqA7RUP6VnHWHwB";
 //        String updateIdDappAdds = "1FYxtYYKme9EjuZMsWVesJxrP75fAHo2jL";
 //        String getupdate_id = "c1dbeae8073223980531cbca6715cafb5165025eafa78abc1ba45451ec8c94e0";
 //        String updateIdTimestamp = new Date().getTime() + "";  // 时间戳
 //        StringBuilder updateIdSign = new StringBuilder();
-//        updateIdSign.append(updateIdUserAdds).append(updateIdDappAdds).append(getupdate_id).append(updateIdTimestamp);
+//        updateIdSign.append(updateIdDappAdds).append(getupdate_id).append(updateIdTimestamp);
 //        String updateIdSignature = signMsg(Sha256.getSHA256(updateIdSign.toString()), "KzGmcC2Fa48NHmad6SEst4Q1J9mHd95aFxzEuNrT94CEb6qrZAV6");
-//        JSONObject getUpdateId = requestGetUpdateid(updateIdUserAdds, updateIdDappAdds, getupdate_id, updateIdTimestamp, updateIdSignature);
+//        JSONObject getUpdateId = requestGetUpdateid(updateIdDappAdds, getupdate_id, updateIdTimestamp, updateIdSignature);
 //        System.out.println(getUpdateId);
+
+        String protocol = "FOCP";
+        String listAllDappAdds = "1P7tNdeYtc9jyn11oa6p1Zr6Hudo8Fv7XU";
+        String listAllTimestamp = new Date().getTime() + "";  // 时间戳
+        StringBuilder listAllSign = new StringBuilder();
+        listAllSign.append(protocol).append(listAllDappAdds).append(listAllTimestamp);
+        String listAllSignature = signMsg(Sha256.getSHA256(listAllSign.toString()), "L47Gb8KNbqeKSG3opCPFn29wkThWj4bMb2hbuxPRboyp9KH7Amjf");
+        JSONObject listAll = requestListAllDriveId(protocol, listAllDappAdds, listAllTimestamp, listAllSignature);
+        System.out.println(listAll);
 
 
     }
@@ -138,7 +144,7 @@ public class Demo {
         param.put("data", data);
         param.put("timestamp", timestamp);
         param.put("user_signature", signature);
-        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://localhost:8880/api/put", param.toJSONString()));
+        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://freedrive.cash:8880/api/put", param.toJSONString()));
         return result;
 
     }
@@ -153,33 +159,31 @@ public class Demo {
         param.put("drive_id", drive_id);
         param.put("timestamp", timestamp);
         param.put("user_signature", signature);
-        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://localhost:8880/api/update", param.toJSONString()));
+        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://freedrive.cash:8880/api/update", param.toJSONString()));
         return result;
 
     }
 
-    public static JSONObject requestGetDriveid(String user_addr, String dapp_addr, String drive_id, String timestamp, String signature) throws Exception {
+    public static JSONObject requestGetDriveid(String dapp_addr, String drive_id, String timestamp, String signature) throws Exception {
 
         JSONObject param = new JSONObject();
-        param.put("user_addr", user_addr);
         param.put("dapp_addr", dapp_addr);
         param.put("drive_id", drive_id);
         param.put("timestamp", timestamp);
         param.put("dapp_signature", signature);
-        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://localhost:8880/api/get", param.toJSONString()));
+        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://freedrive.cash:8880/api/get", param.toJSONString()));
         return result;
 
     }
 
-    public static JSONObject requestGetUpdateid(String user_addr, String dapp_addr, String update_id, String timestamp, String signature) throws Exception {
+    public static JSONObject requestGetUpdateid(String dapp_addr, String update_id, String timestamp, String signature) throws Exception {
 
         JSONObject param = new JSONObject();
-        param.put("user_addr", user_addr);
         param.put("dapp_addr", dapp_addr);
         param.put("update_id", update_id);
         param.put("timestamp", timestamp);
         param.put("dapp_signature", signature);
-        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://localhost:8880/api/get", param.toJSONString()));
+        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://freedrive.cash:8880/api/get", param.toJSONString()));
         return result;
 
     }
@@ -191,7 +195,7 @@ public class Demo {
         param.put("dapp_addr", dapp_addr);
         param.put("timestamp", timestamp);
         param.put("dapp_signature", signature);
-        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://localhost:8880/api/list_drive_id", param.toJSONString()));
+        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://freedrive.cash:8880/api/list_drive_id", param.toJSONString()));
         return result;
 
     }
@@ -202,7 +206,7 @@ public class Demo {
         param.put("dapp_addr", dapp_addr);
         param.put("timestamp", timestamp);
         param.put("dapp_signature", signature);
-        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://localhost:8880/api/get_balance", param.toJSONString()));
+        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://freedrive.cash:8880/api/get_balance", param.toJSONString()));
         return result;
 
     }
@@ -214,10 +218,23 @@ public class Demo {
         param.put("page", page);
         param.put("timestamp", timestamp);
         param.put("dapp_signature", signature);
-        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://localhost:8880/api/get_tx_history", param.toJSONString()));
+        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://freedrive.cash:8880/api/get_tx_history", param.toJSONString()));
         return result;
 
     }
+
+    public static JSONObject requestListAllDriveId(String protocol, String dapp_addr, String timestamp, String signature) throws Exception {
+
+        JSONObject param = new JSONObject();
+        param.put("protocol", protocol);
+        param.put("dapp_addr", dapp_addr);
+        param.put("timestamp", timestamp);
+        param.put("dapp_signature", signature);
+        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://freedrive.cash:8880/api/list_all_drive_id", param.toJSONString()));
+        return result;
+
+    }
+
 
 
     public static String signMsg(String msg, String privateKey) {
