@@ -1,6 +1,7 @@
 package com.demo.bitcoin.test;
 
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.collections.map.HashedMap;
 import org.bitcoinj.core.Address;
@@ -93,19 +94,19 @@ public class Demo {
 //
 //
 //        // 查询指定driveId下的数据
-        String driveIdMethod = "/api/get";
-        String driveIdDappAdds = "1FYxtYYKme9EjuZMsWVesJxrP75fAHo2jL";
-        String getdrive_id = "89bf4e01465d56bb6fdf45f2ffb2d033631b5ba292bcf0f61d24c36387942913";
-        String driveIdTimestamp = new Date().getTime() + "";  // 时间戳
-        StringBuilder driveIdSign = new StringBuilder();
-        driveIdSign.append(driveIdMethod).append(driveIdDappAdds).append(getdrive_id).append(driveIdTimestamp);
-        String sha256 = Sha256.getSHA256(driveIdSign.toString());
-        String driveIdSignature = signMsg(sha256, "KzGmcC2Fa48NHmad6SEst4Q1J9mHd95aFxzEuNrT94CEb6qrZAV6");
-//        System.out.println(driveIdSign.toString());
-//        System.out.println(sha256);
-//        System.out.println(driveIdSignature);
-        JSONObject getDriveId = requestGetDriveid(driveIdDappAdds, getdrive_id, driveIdTimestamp, driveIdSignature);
-        System.out.println(getDriveId);
+//        String driveIdMethod = "/api/get";
+//        String driveIdDappAdds = "1FYxtYYKme9EjuZMsWVesJxrP75fAHo2jL";
+//        String getdrive_id = "89bf4e01465d56bb6fdf45f2ffb2d033631b5ba292bcf0f61d24c36387942913";
+//        String driveIdTimestamp = new Date().getTime() + "";  // 时间戳
+//        StringBuilder driveIdSign = new StringBuilder();
+//        driveIdSign.append(driveIdMethod).append(driveIdDappAdds).append(getdrive_id).append(driveIdTimestamp);
+//        String sha256 = Sha256.getSHA256(driveIdSign.toString());
+//        String driveIdSignature = signMsg(sha256, "KzGmcC2Fa48NHmad6SEst4Q1J9mHd95aFxzEuNrT94CEb6qrZAV6");
+////        System.out.println(driveIdSign.toString());
+////        System.out.println(sha256);
+////        System.out.println(driveIdSignature);
+//        JSONObject getDriveId = requestGetDriveid(driveIdDappAdds, getdrive_id, driveIdTimestamp, driveIdSignature);
+//        System.out.println(getDriveId);
 
         // 查询指定updateId下的数据
 //        String updateIdMethod = "/api/get";
@@ -120,16 +121,32 @@ public class Demo {
 
         // 根据协议查询所有的
 //        String listAllMethod = "/api/list_all_drive_id";
-//        String protocol = "FOCP";
+//        String protocol = "FOCP1V5";
 //        String listAllDappAdds = "1FYxtYYKme9EjuZMsWVesJxrP75fAHo2jL";
+//        Integer listPage = 2;
+//        Integer detail = 0;
 //        String listAllTimestamp = new Date().getTime() + "";  // 时间戳
 //        StringBuilder listAllSign = new StringBuilder();
-//        listAllSign.append(listAllMethod).append(protocol).append(listAllDappAdds).append(listAllTimestamp);
+//        listAllSign.append(listAllMethod).append(protocol).append(listAllDappAdds).append(listPage).append(detail).append(listAllTimestamp);
 //        String listAllSignature = signMsg(Sha256.getSHA256(listAllSign.toString()), "KzGmcC2Fa48NHmad6SEst4Q1J9mHd95aFxzEuNrT94CEb6qrZAV6");
-//        JSONObject listAll = requestListAllDriveId(protocol, listAllDappAdds, listAllTimestamp, listAllSignature);
+//        JSONObject listAll = requestListAllDriveId(protocol, listAllDappAdds, listPage, detail, listAllTimestamp, listAllSignature);
 //        System.out.println(listAll);
 
-//        charge("FNpBxrPyLckRZtkKccaw4mbSxHzwqzP3Ae","100000");
+//        terminate_drive_id
+        String terminateMethod = "/api/set_auth";
+        String useraddr = "1DEPkC79Mr8QRa1w7NJxqA7RUP6VnHWHwB";
+        String dappaddr = "1FYxtYYKme9EjuZMsWVesJxrP75fAHo2jL";
+        String drive_id = "215c8a296525490c73aa163d83ead8ac2b2459658e80dc67f1364179e7177454";
+        String[] admins = {"0"};                        // 传0
+        String[] members = {"0"};                       // 传0
+        String timestamp = new Date().getTime() + "";
+        StringBuffer sb = new StringBuffer();
+        sb.append(terminateMethod).append(useraddr).append(dappaddr).append(drive_id).append(admins[0]).append(members[0]).append(timestamp);
+        System.out.println(sb.toString());
+        String signature = signMsg(Sha256.getSHA256(sb.toString()),"L4WAm7aJxmSDGhxgpWMjbm8NvgETae8S1d6L8P9gSpo6EF7nYhFm");
+        JSONObject terminate = requestTerminateDriveId(useraddr, dappaddr, drive_id, admins, members, timestamp, signature);
+        System.out.println(terminate);
+
 
 
     }
@@ -240,14 +257,32 @@ public class Demo {
 
     }
 
-    public static JSONObject requestListAllDriveId(String protocol, String dapp_addr, String timestamp, String signature) throws Exception {
+    public static JSONObject requestListAllDriveId(String protocol, String dapp_addr, Integer page, Integer detail, String timestamp, String signature) throws Exception {
 
         JSONObject param = new JSONObject();
         param.put("protocol", protocol);
         param.put("dapp_addr", dapp_addr);
+        param.put("page", page);
+        param.put("detail", detail);
         param.put("timestamp", timestamp);
         param.put("dapp_signature", signature);
         JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://freedrive.cash:8880/api/list_all_drive_id", param.toJSONString()));
+        return result;
+
+    }
+
+    public static JSONObject requestTerminateDriveId(String user_addr, String dapp_addr, String drive_id, String[] admins, String[] members, String timestamp, String user_signature) throws Exception {
+
+        JSONObject param = new JSONObject();
+        param.put("user_addr", user_addr);
+        param.put("dapp_addr", dapp_addr);
+        param.put("drive_id", drive_id);
+        param.put("admin", admins);
+        param.put("member", members);
+        param.put("timestamp", timestamp);
+        param.put("user_signature", user_signature);
+        System.out.println(param.toJSONString());
+        JSONObject result = (JSONObject) JSONObject.parse(HttpUtil.doPost("http://freedrive.cash:8880/api/set_auth", param.toJSONString()));
         return result;
 
     }
