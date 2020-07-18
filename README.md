@@ -7,6 +7,8 @@ include java/scala/c++/c/js/python/go/rust/ruby/c#/perl/php implemention.
 3. metadata和data的内容都必须转成16进制，如果有中文需要utf-8转码，在转16进制
 
 ## c++/c
+CPP example(./c++)
+
 
 ## js
 
