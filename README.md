@@ -9,6 +9,8 @@ include java/scala/c++/c/js/python/go/rust/ruby/c#/perl/php implemention.
 ## c++/c
 c++ [example](./c++)
 
+### dependence
+apt-get install libevent-dev libcurl4-openssl-dev
 
 ## js
 

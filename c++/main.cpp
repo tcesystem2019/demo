@@ -282,7 +282,7 @@ int main(int argc, char *argv[])
   listAllDrive();
 
   string drive_id = "5c4d2b06bdb186f5050473420e833bc5db25bb5171e77852047c55f575933b96";
-  update("drive_id");
+  update(drive_id);
   get(drive_id);
   setAuth(drive_id);
 
