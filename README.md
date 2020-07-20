@@ -27,6 +27,19 @@ dependence:
 perl -MCPAN -e shell
 install Bitcoin::Crypto
 ```
+## c#
+c# [example](./c#)
+```
+dependence:
+https://github.com/MetacoSA/NBitcoin
+```
+## php
+php [example](./php)
+```
+dependence:
+https://github.com/BitcoinPHP/BitcoinECDSA.php
+```
+
 ## js
 
 ## go
@@ -35,6 +48,6 @@ install Bitcoin::Crypto
 
 ## ruby
 
-## c#
 
-## php
+
+
