@@ -20,6 +20,13 @@ python [example](./python)
 dependence:
 pip install bitcoin
 ```
+## perl
+perl [example](./perl)
+```
+dependence:
+perl -MCPAN -e shell
+install Bitcoin::Crypto
+```
 ## js
 
 ## go
@@ -29,7 +36,5 @@ pip install bitcoin
 ## ruby
 
 ## c#
-
-## perl
 
 ## php
