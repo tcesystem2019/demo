@@ -8,21 +8,20 @@ java [example](./java)
 2. 首先生成地址和私钥，私钥需要自己保存，不可丢失，所有请求需要地址请求，签名需要私钥
 3. metadata和data的内容都必须转成16进制，如果有中文需要utf-8转码，在转16进制
 ```
-
 ## c++/c
 c++ [example](./c++)
 ```
 dependence:      
 apt-get install libevent-dev libcurl4-openssl-dev
 ```
-## js
-
 ## python
 python [example](./python)
 ```
 dependence:
 pip install bitcoin
 ```
+## js
+
 ## go
 
 ## rust
