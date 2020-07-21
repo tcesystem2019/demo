@@ -23,7 +23,7 @@ def get_balance():
         "dapp_addr": dapp_address,
         "timestamp": times,
     }
-    u_data['dapp_signature'] = signe(urls, u_data, dapp_private_key)
+    u_data['dapp_signature'] = sign(urls, u_data, dapp_private_key)
     re = requests.post(hosts + urls, json=u_data)
     return re.json()
 
@@ -39,7 +39,7 @@ def put_data(metadata, main_data):
         "data": main_data.encode('utf8').hex(),
         "timestamp": times
     }
-    u_data['user_signature'] = signe(urls, u_data, dapp_private_key)
+    u_data['user_signature'] = sign(urls, u_data, dapp_private_key)
     re = requests.post(hosts + urls, json=u_data)
     return re.json()
 
@@ -56,7 +56,7 @@ def update_data(metadata, data, drive_id):
         "drive_id": drive_id,
         "timestamp": times
     }
-    u_data['user_signature'] = signe(urls, u_data, dapp_private_key)
+    u_data['user_signature'] = sign(urls, u_data, dapp_private_key)
     re = requests.post(hosts + urls, json=u_data)
     return re.json()
 
@@ -70,7 +70,7 @@ def get_data(drive_id):
         "drive_id": drive_id,
         "timestamp": times
     }
-    u_data['dapp_signature'] = signe(urls, u_data, dapp_private_key)
+    u_data['dapp_signature'] = sign(urls, u_data, dapp_private_key)
     re = requests.post(hosts + urls, json=u_data)
     return re.json()
 
@@ -84,13 +84,13 @@ def get_list_drive_id(dapp_address):
         "dapp_addr": dapp_address,
         "timestamp": times
     }
-    u_data['dapp_signature'] = signe(urls, u_data, dapp_private_key)
+    u_data['dapp_signature'] = sign(urls, u_data, dapp_private_key)
     re = requests.post(hosts + urls, json=u_data)
     return re.json()
 
 
 # 签名
-def signe(url_name, param, sign_key):
+def sign(url_name, param, sign_key):
     vs = url_name
     for k, v in param.items():
         vs += str(v)
